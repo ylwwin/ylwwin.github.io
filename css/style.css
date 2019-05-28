@@ -1,4 +1,9 @@
-@import url("//fonts.googleapis.com/css?family=Lato:400,400italic");
+@font-face {
+  font-family: 'Poiret One';
+  font-style: normal;
+  font-weight: 400;
+  src: url("font/googlefonts-PoiretOne.woff") format('woff');
+}
 @font-face {
   font-family: 'FontAwesome';
   font-style: normal;
@@ -10,10 +15,10 @@
   padding: 0;
 }
 body {
-  background: #eee;
+  background: #f5f5f5;
   color: #444;
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   text-shadow: 0 0 1px transparent;
 }
 @media screen and (max-width: 1260px) {
@@ -26,13 +31,53 @@ body {
     font-size: 13px;
   }
 }
+body #experiment_wrapper {
+  display: none;
+  background: rgba(255,255,255,0.6);
+  width: 100%;
+  z-index: 9999;
+}
+@media screen and (max-width: 1260px) {
+  body #experiment_wrapper {
+    margin-left: -30px;
+    padding-right: 60px;
+  }
+}
+body #experiment_wrapper #experiment {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 40px 0 0 0;
+}
+@media screen and (max-width: 1260px) {
+  body #experiment_wrapper #experiment {
+    padding-left: 70px;
+  }
+}
+@media screen and (max-width: 1260px) {
+  body #experiment_wrapper #slide_pager {
+    padding-left: 30px;
+  }
+}
+body #experiment_wrapper #experiment_close {
+  padding: 12px 0;
+  text-align: center;
+}
+body #experiment_wrapper #experiment_close:before {
+  font-family: FontAwesome;
+  font-size: 2em;
+  content: '\f077';
+}
+body #experiment_wrapper #experiment_close:hover {
+  color: #777;
+  cursor: pointer;
+}
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: 'Poiret One', simhei, cursive;
 }
 h1 {
   font-size: 1.8em;
@@ -45,7 +90,7 @@ h3 {
 }
 a {
   text-decoration: none;
-  color: #258fb8;
+  color: #777;
 }
 a:hover {
   text-decoration: underline;
@@ -91,6 +136,16 @@ a:hover {
     float: none;
   }
 }
+#main-col-page {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (max-width: 960px) {
+  #main-col-page {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 1260px) {
   #wrapper {
     margin-right: 300px;
@@ -103,13 +158,18 @@ a:hover {
 }
 #header {
   text-shadow: 0 0 1px #fff;
-  margin: 50px auto;
+  margin: 24px auto;
+}
+#header .blog-header {
+  padding: 16px;
+  display: inline-block;
+  min-width: 320px;
 }
 #header a {
-  color: #999;
+  color: #333;
 }
 #header a:hover {
-  color: #258fb8;
+  color: #777;
   text-decoration: none;
 }
 #header h1 {
@@ -119,37 +179,34 @@ a:hover {
 }
 #header h2 {
   font-weight: normal;
-  font-size: 0.9em;
+  font-size: 1.2em;
   line-height: 1;
   margin-top: 10px;
 }
 #header #main-nav {
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: 'Poiret One', simhei, cursive;
+  display: inline-block;
   line-height: 2.5em;
 }
 #header #main-nav ul {
   list-style: none;
 }
 #header #main-nav ul li {
-  float: left;
+  display: inline-block;
   margin-left: 30px;
+  font-size: 14px;
 }
-article {
-  -webkit-box-shadow: 1px 2px 3px #ddd;
-  box-shadow: 1px 2px 3px #ddd;
-  background: #fff;
-}
-article.page {
-  padding-left: 20px;
-}
-article.page .icon {
-  display: none;
+article.notify .icon:before {
+  content: '\f071';
 }
 article.post .icon:before {
-  content: '\f016';
+  content: '\f02b';
 }
 article.photo .icon:before {
   content: '\f030';
+}
+article.video .icon:before {
+  content: '\f03d';
 }
 article.link .icon:before {
   content: '\f0c1';
@@ -162,13 +219,27 @@ article.link .title a:after {
   vertical-align: super;
 }
 article .post-content {
-  padding: 20px 20px 15px 77px;
+  background: #fff;
+  padding: 28px 28px 28px 77px;
   margin-bottom: 50px;
   position: relative;
 }
 @media screen and (max-width: 600px) {
   article .post-content {
     padding-left: 20px;
+  }
+}
+article .post-content .imgCenter {
+  margin: 16px;
+  text-align: center;
+}
+article.page .post-content {
+  background: #fff;
+  padding: 28px 56px 16px 56px;
+}
+@media screen and (max-width: 1000px) {
+  article.page .post-content {
+    padding: 28px 20px 16px 20px;
   }
 }
 article .gallery {
@@ -241,7 +312,7 @@ article header .icon {
   position: absolute;
   top: 20px;
   left: 20px;
-  color: #258fb8;
+  color: #777;
 }
 @media screen and (max-width: 600px) {
   article header .icon {
@@ -258,19 +329,20 @@ article header .icon:before {
 }
 article header time {
   color: #999;
-  font: 0.9em "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 1em 'Poiret One', simhei, cursive;
+  font-weight: 700;
   margin-bottom: 5px;
   display: block;
   line-height: 1;
 }
 article header .title {
-  font-weight: normal;
+  font-weight: 700;
 }
 article header .title a {
   color: #444;
 }
 article header .title a:hover {
-  color: #258fb8;
+  color: #777;
   text-decoration: none;
 }
 article .entry {
@@ -291,33 +363,30 @@ article .entry h6,
 article .entry .video-container {
   margin-top: 15px;
 }
-article .entry table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  empty-cells: show;
-  border: 1px solid #e2e2e2;
+article .entry >table {
+  font-size: 0.9em;
+  margin: 24px auto;
   width: 100%;
+  border: 1px solid #ccc;
+  border-left: 0;
+  border-spacing: 0;
 }
-article .entry table th {
-  white-space: nowrap;
-  color: #444;
-  font-weight: 600;
-  background: #eee;
+article .entry >table th {
+  padding: 4px 12px;
+  border-left: 1px solid #ccc;
+  border-top: 0;
 }
-article .entry table td,
-article .entry table th {
-  border: 1px solid #e2e2e2;
-  padding: 8px 16px;
-  text-align: left;
+article .entry >table td {
+  padding: 4px 12px;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  word-break: break-all;
 }
 article .entry blockquote {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  font-style: italic;
-  font-family: "Georgia", serif;
-  font-size: 1.2em;
-  padding: 0 30px 15px;
-  text-align: center;
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 0 24px 15px;
+  font-size: 0.9em;
 }
 article .entry blockquote footer {
   border-top: none;
@@ -341,23 +410,23 @@ article .entry code {
   padding: 0 5px;
   margin: 0 2px;
   font-size: 0.9em;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 3px;
+}
+article .entry >pre {
+  overflow: auto;
 }
 article .entry pre {
   background: #eee;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   margin-top: 15px;
-  overflow: auto;
   padding: 7px 15px;
-  border-radius: 2px;
 }
 article .entry pre code {
   background: none;
   padding: 0;
   margin: 0;
   border: none;
-  border-radius: 0;
 }
 article .entry ul,
 article .entry ol,
@@ -377,8 +446,8 @@ article .entry dl dl {
 }
 article .entry h1,
 article .entry h2 {
-  font-weight: normal;
-  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   margin-top: 20px;
 }
@@ -386,10 +455,11 @@ article .entry h3,
 article .entry h4,
 article .entry h5,
 article .entry h6 {
-  font-weight: normal;
+  font-weight: bold;
 }
 article .entry img,
 article .entry video {
+  margin-top: 20px;
   max-width: 100%;
   height: auto;
   border: none;
@@ -442,7 +512,7 @@ article .entry .pullquote {
 article footer {
   margin-top: 15px;
   padding-top: 10px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #ccc;
   color: #999;
   font-size: 0.9em;
   line-height: 16px;
@@ -453,16 +523,14 @@ article footer a {
   color: #999;
 }
 article footer a:hover {
-  color: #258fb8;
+  color: #777;
   text-decoration: none;
 }
-article footer a:before {
-  font: 1.1em FontAwesome;
-  padding-right: 10px;
+article footer a:before,
+article footer a:after {
+  font: 1.3em FontAwesome;
+  padding: 24px;
   vertical-align: middle;
-}
-article footer a.more-link:before {
-  content: '\f054';
 }
 article footer a.comment-link:before {
   content: '\f075';
@@ -483,6 +551,9 @@ article footer .categories:before {
   top: 2px;
   left: 1px;
 }
+article footer .tags {
+  text-align: left;
+}
 article footer .tags:before {
   content: '\f02b';
   top: 3px;
@@ -494,28 +565,17 @@ article footer .addthis {
 article footer .addthis iframe {
   margin-top: 0;
 }
-#comment {
-  padding: 20px;
-  background: #fff;
-  -webkit-box-shadow: 1px 2px 3px #ddd;
-  box-shadow: 1px 2px 3px #ddd;
-  margin-bottom: 50px;
-}
-#comment .title {
-  font-weight: normal;
-  margin-bottom: 15px;
-}
 #pagination a {
   display: block;
   padding: 5px 10px;
-  background: #ddd;
+  border: 1px solid #ccc;
   color: #999;
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: 'Poiret One', simhei, cursive;
   text-shadow: 0 0 1px #fff;
   margin-bottom: 50px;
 }
 #pagination a:hover {
-  background: #258fb8;
+  background: #777;
   color: #fff;
   text-decoration: none;
   text-shadow: none;
@@ -534,7 +594,6 @@ article footer .addthis iframe {
   color: #999;
   font-weight: normal;
   margin-bottom: 30px;
-  text-shadow: 0 0 1px #fff;
 }
 .archive-title:before {
   font-family: FontAwesome;
@@ -548,9 +607,6 @@ article footer .addthis iframe {
   content: '\f07b';
 }
 .archive {
-  -webkit-box-shadow: 1px 2px 3px #ddd;
-  box-shadow: 1px 2px 3px #ddd;
-  border-bottom: 1px solid #ddd;
   margin-bottom: 50px;
 }
 .archive article {
@@ -558,7 +614,13 @@ article footer .addthis iframe {
   box-shadow: none;
 }
 .archive article .post-content {
-  margin-bottom: 0;
+  padding: 10px 12px 10px 77px;
+  margin-bottom: 4px;
+}
+@media screen and (max-width: 600px) {
+  .archive article .post-content {
+    padding-left: 20px;
+  }
 }
 #sidebar {
   width: 270px;
@@ -571,16 +633,13 @@ article footer .addthis iframe {
   }
 }
 #sidebar .widget {
-  background: #fff;
-  -webkit-box-shadow: 1px 2px 3px #ddd;
-  box-shadow: 1px 2px 3px #ddd;
   margin-bottom: 30px;
   word-wrap: break-word;
 }
 #sidebar .widget .title {
   padding: 15px 20px;
   font-size: 1em;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
   font-weight: normal;
 }
 #sidebar .widget .entry {
@@ -609,11 +668,11 @@ article footer .addthis iframe {
 }
 #sidebar .search input {
   background: #fff;
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  border: none;
+  font-family: 'Poiret One', simhei, cursive;
   font-style: italic;
   font-size: 1em;
   padding: 10px 15px;
-  border: 1px solid #ddd;
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -622,6 +681,9 @@ article footer .addthis iframe {
 }
 #sidebar .search input:focus {
   color: #444;
+}
+#sidebar .tag {
+  background: #fff;
 }
 #sidebar .tag small {
   margin-left: 15px;
@@ -634,7 +696,7 @@ article footer .addthis iframe {
   content: ')';
 }
 #sidebar .twitter li {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
   padding: 15px 20px;
   font-size: 0.9em;
 }
@@ -655,18 +717,17 @@ article footer .addthis iframe {
   display: inline-block;
 }
 #footer {
+  text-align: center;
   color: #999;
   margin-bottom: 50px;
-  font: 0.9em/1.6 "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 1.2em/1.6 'Poiret One', simhei, cursive;
   text-shadow: 0 0 1px #fff;
 }
 .entry .gist {
   background: #eee;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   margin-top: 15px;
   padding: 7px 15px;
-  border-radius: 2px;
-  text-shadow: 0 0 1px #fff;
   line-height: 1.6;
   overflow: auto;
   color: #666;
@@ -694,18 +755,16 @@ article footer .addthis iframe {
   font-size: 100%;
 }
 .entry .gist .gist-file .gist-meta a {
-  color: #258fb8;
+  color: #777;
 }
 .entry .gist .gist-file .gist-meta a:visited {
-  color: #258fb8;
+  color: #777;
 }
 figure.highlight {
   background: #eee;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   margin-top: 15px;
   padding: 7px 15px;
-  border-radius: 2px;
-  text-shadow: 0 0 1px #fff;
   line-height: 1.6;
   overflow: auto;
   position: relative;
@@ -732,19 +791,12 @@ figure.highlight table {
 figure.highlight .gutter {
   color: #999;
   padding-right: 15px;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #ccc;
   text-align: right;
 }
 figure.highlight .code {
   padding-left: 15px;
-  border-left: 1px solid #fff;
   color: #666;
-}
-figure.highlight .line {
-  height: 20px;
-}
-figure.highlight .line.marked {
-  background: #d6d6d6;
 }
 pre .comment,
 pre .template_comment,
@@ -813,4 +865,24 @@ pre .clojure .title {
 }
 pre .deletion {
   color: #dc322f;
+}
+#winterland {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}
+#winterland canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#scroll2top {
+  position: fixed;
+  right: 36px;
+  bottom: 36px;
 }
